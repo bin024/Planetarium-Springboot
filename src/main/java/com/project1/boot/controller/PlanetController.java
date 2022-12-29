@@ -78,5 +78,10 @@ public class PlanetController {
     public ResponseEntity<String> deletePlanet(@PathVariable int id){
         return new ResponseEntity<>(this.planetService.deletePlanetById(id),HttpStatus.OK);
     }    
+
+    // @GetMapping("/uhoh")
+    // public ResponseEntity<String> returnFiveHundered(){
+    //     return new ResponseEntity<>("returing 500 status code", HttpStatus.INTERNAL_SERVER_ERROR);
+    // }
 }
 

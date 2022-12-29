@@ -14,6 +14,12 @@
         </encoder>
     </appender>
 
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are how you tell logback how to format your logs -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
 
     <!-- root tells logback what your default log settings should be if you don't specify any -->
     <root level="INFO">
