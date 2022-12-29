@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  app:
+    image: qq470706475/project1:file
+    container_name: project1
+    ports:
+      - 8080:8080
+    environment:
+      - VARIABLE=VALUE
+    volumes:
+      - ./logs/:/logs/
+
+  loki: #aggregate logs
+    image: grafana/loki:latest # think of this as a database for your logs
+    container_name: logging-loki
+    ports:
+      - 3100:3100
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: logging-promtail
+    volumes:
+      - ./configs/promtail-config.yml:/etc/promtail/promtail-config.yml # configuration I made:config saved in container
+      - ./logs/staticLogs.log:/var/log/staticLogs.log # log we want to save:log in promtail
+    command: "--config.file=/etc/promtail/promtail-config.yml"
+
+  grafana:
+    image: grafana/grafana:latest # default username/password:admin/password
+    container_name: logging-grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - loki
+
+  prometheus:
+    image: prom/prometheus:latest # think of this as your database for your metrics over time
+    ports:
+      - 9090:9090
+    volumes:
+      # - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./configs/prometheus-config.yml:/etc/prometheus/prometheus-config.yml # passing the directory instead of just the config file for prometheus
+    container_name: logging-prometheus
+    command: "--config.file=/etc/prometheus/prometheus-config.yml"

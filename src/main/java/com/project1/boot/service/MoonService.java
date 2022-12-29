@@ -53,7 +53,7 @@ public class MoonService {
         return "Moon with given id deleted";
     }
 
-    public List<Moon> getMoonsFromPlanets(int planetId){
+    public List<Moon> getMoonsFromPlanet(int planetId){
         List<Moon> moons = this.moonDao.getMoonsFromPlanet(planetId);
         if(moons.size() != 0){
             return moons;

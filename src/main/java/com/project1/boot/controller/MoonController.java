@@ -69,9 +69,9 @@ public class MoonController {
         return new ResponseEntity<>(this.moonService.getAllMoons(),HttpStatus.OK);
     }
 
-    @GetMapping("api/planet/{id}/moon")
-    public ResponseEntity<List<Moon>> findPlanetMoons(int id){
-        return new ResponseEntity<>(this.moonService.getMoonsFromPlanets(id),HttpStatus.OK);
+    @GetMapping("api/planet/{id}/moons")
+    public ResponseEntity<List<Moon>> findPlanetMoons(@PathVariable int id){
+        return new ResponseEntity<>(this.moonService.getMoonsFromPlanet(id),HttpStatus.OK);
     }
 
     @PostMapping("/api/moon")

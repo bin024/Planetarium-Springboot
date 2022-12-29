@@ -22,6 +22,6 @@ public interface MoonDao extends JpaRepository<Moon, Integer> {
 
 
     @Transactional
-    @Query(value = ("select * from moons where myPlanetId = :myPlanetId"), nativeQuery = true)
+    @Query(value = ("select * from moons where myplanetid = :myPlanetId"), nativeQuery = true)
     List<Moon> getMoonsFromPlanet(@Param("myPlanetId")int myPlanetId);
 }

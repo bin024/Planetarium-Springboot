@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - prometheus:9090
+  - job_name: project1
+    metrics_path: /actuator/prometheus # this endpoit is added by micrometer dependency in app
+    static_configs:
+      - targets:
+          - app:8080 # this tells prometheus to target port 8080 of the machine running docker

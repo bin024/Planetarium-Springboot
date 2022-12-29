@@ -3,20 +3,15 @@ package com.project1.boot.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.postgresql.util.PSQLException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project1.boot.entities.User;
-import com.project1.boot.exceptions.AuthenticationFailed;
-import com.project1.boot.exceptions.EntityNotFound;
+
 import com.project1.boot.service.UserService;
 
 @RestController
