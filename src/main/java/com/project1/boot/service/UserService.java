@@ -28,5 +28,10 @@ public class UserService {
         this.userDao.createUser(user.getUsername(), user.getPassword());
         return "User registered";
     }
+
+    public String deleteUserById(int id){
+        this.userDao.deleteById(id);
+        return "User with given id deleted";
+    }
     
 }
