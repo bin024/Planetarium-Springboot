@@ -84,8 +84,8 @@ public class MoonController {
         return new ResponseEntity<>(this.moonService.deleteMoonById(id),HttpStatus.OK);
     }    
 
-    // @GetMapping("/uhoh")
-    // public ResponseEntity<String> returnFiveHundered(){
-    //     return new ResponseEntity<>("returing 500 status code", HttpStatus.INTERNAL_SERVER_ERROR);
-    // }
+    @GetMapping("/uhoh")
+    public ResponseEntity<String> returnFiveHundered(){
+        return new ResponseEntity<>("returing 500 status code", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
